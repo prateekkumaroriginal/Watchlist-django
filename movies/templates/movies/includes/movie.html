@@ -1,0 +1,35 @@
+{% load static %}
+
+<div class="movie">
+    <img src={{movie.cover_img.url}} alt="Movie Cover">
+    <div class="movie-details">
+        <h6 class="title">{{movie.title}}</h6>
+        <button class="list-change-button" type="button"> > </button>
+        <p class="release-year">Release Year: {{movie.release_year}}</p>
+        <p class="duration">Duration: {{movie.duration_in_min}} min</p>
+        <p class="imdb-rating">IMDb Rating: {{movie.imdb_rating}}</p>
+        <p class="rotten-tomatoes-score">Tomatoes: {{movie.rotten_tomatoes_score}}%</p>
+        <div class="tags">
+            {% for tag in movie.tags.all %}
+            <span class="tag">{{tag}}</span>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- <div id="list-change-popup" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Popup Title</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Popup Content</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div> -->

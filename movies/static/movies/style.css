@@ -1,0 +1,122 @@
+#main {
+    display: grid;
+    height: 90vh;
+    gap: 1rem;
+    grid-template-rows: 1fr 4fr;
+}
+
+#list-container {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 2rem;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30rem;
+    width: 18rem;
+    border-radius: 0.6rem;
+    background-color: #bbe7bb;
+}
+
+.list-item>h3 {
+    margin-top: 1rem;
+    position: sticky;
+}
+
+/* movie-list */
+.movie-container {
+    padding: 0.3rem;
+    overflow-y: auto;
+}
+
+.movie-container::-webkit-scrollbar {
+    width: .5rem;
+}
+
+.movie-container::-webkit-scrollbar-track {
+    background-color: #81bf81;  
+    border-radius: .6rem;
+    margin: 1rem; 
+}
+
+.movie-container::-webkit-scrollbar-thumb {
+    background-color: #008900;  
+    border-radius: .6rem;  
+}
+
+.movie-container::-webkit-scrollbar-thumb:hover {
+    background-color: #006700;  
+}
+
+.movie-container::-webkit-scrollbar-thumb:active {
+    background-color: #00A500;  
+}
+
+.movie {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: .5rem;
+    border-radius: .5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 17.5rem;
+    max-width: 600px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.list-change-button {
+    position: absolute;
+    border-radius: .5rem;
+    border: 2px solid #1a00ac6d;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #fff;
+    color: #000;
+    z-index: 1;
+}
+
+.movie img {
+    max-width: 7rem;
+    height: auto;
+    margin-right: 20px;
+}
+
+.movie-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-size: 0.7rem;
+}
+
+.movie-details>* {
+    margin-bottom: 0px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-top: 10px;
+}
+
+.tag {
+    background-color: rgb(186, 186, 186);
+    color: #1a00ac;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    font-size: .6rem;
+    font-weight: bold;
+}
+
+.title {
+    float: left;
+    margin-right: 2rem;
+}
+

@@ -1,0 +1,59 @@
+{% extends 'movies/base.html' %}
+{% load static %}
+
+{% block page_title %}Watchlist{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href={% static 'movies/style.css' %}>
+{% endblock css_files %}
+
+{% block content %}
+
+<div id="main">
+    <div class="mt-5" id="list-container">
+        <div class="list-item" id="currently-watching">
+            <h3>Currently Watching</h3>
+            <div class="movie-container">
+                {% for movie in movies_currently_watching %}
+                {% include 'movies/includes/movie.html' %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="list-item" id="on-hold">
+            <h3>On Hold</h3>
+            <div class="movie-container">
+                {% for movie in movies_on_hold %}
+                {% include 'movies/includes/movie.html' %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="list-item" id="plan-to-watch">
+            <h3>Plan to Watch</h3>
+            <div class="movie-container">
+                {% for movie in movies_plan_to_watch %}
+                {% include 'movies/includes/movie.html' %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="list-item" id="completed">
+            <h3>Completed</h3>
+            <div class="movie-container">
+                {% for movie in movies_completed %}
+                {% include 'movies/includes/movie.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block js_files %}
+{% comment %}
+<script>
+    $(document).ready(function () {
+        $(".list-change-button").click(function () {
+            $("#list-change-popup").modal("show");
+        });
+    });
+</script> {% endcomment %}
+{% endblock js_files %}
