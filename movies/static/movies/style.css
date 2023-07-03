@@ -39,22 +39,22 @@
 }
 
 .movie-container::-webkit-scrollbar-track {
-    background-color: #81bf81;  
+    background-color: #81bf81;
     border-radius: .6rem;
-    margin: 1rem; 
+    margin: 1rem;
 }
 
 .movie-container::-webkit-scrollbar-thumb {
-    background-color: #008900;  
-    border-radius: .6rem;  
+    background-color: #008900;
+    border-radius: .6rem;
 }
 
 .movie-container::-webkit-scrollbar-thumb:hover {
-    background-color: #006700;  
+    background-color: #006700;
 }
 
 .movie-container::-webkit-scrollbar-thumb:active {
-    background-color: #00A500;  
+    background-color: #00A500;
 }
 
 .movie {
@@ -119,4 +119,3 @@
     float: left;
     margin-right: 2rem;
 }
-
