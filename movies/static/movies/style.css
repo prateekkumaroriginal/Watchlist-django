@@ -30,6 +30,7 @@
 
 /* movie-list */
 .movie-container {
+    height: 100%;
     padding: 0.3rem;
     overflow-y: auto;
 }
@@ -72,14 +73,18 @@
 
 .list-change-button {
     position: absolute;
-    border-radius: .5rem;
-    border: 2px solid #1a00ac6d;
+    border-radius: 50%;
     top: 0;
     right: 0;
-    padding: 10px;
+    padding: 0;
     background-color: #fff;
     color: #000;
     z-index: 1;
+}
+
+.list-change-button:hover, 
+.list-change-button:active{
+    background-color: #c7bdff6d;
 }
 
 .movie img {

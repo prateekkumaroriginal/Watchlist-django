@@ -48,12 +48,5 @@
 {% endblock content %}
 
 {% block js_files %}
-{% comment %}
-<script>
-    $(document).ready(function () {
-        $(".list-change-button").click(function () {
-            $("#list-change-popup").modal("show");
-        });
-    });
-</script> {% endcomment %}
+<script src={% static 'movies/index.js' %}></script>
 {% endblock js_files %}
