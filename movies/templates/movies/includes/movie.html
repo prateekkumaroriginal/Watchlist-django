@@ -22,14 +22,26 @@
                 </svg>
             </button>
             <form action="/" method="post">
-                <div class="dropdown-menu dropdown-menu-end py-2" style="">
+                <!-- <div class="dropdown-menu dropdown-menu-end py-2" style="">
                     <a class="dropdown-item" href="#">Currently Watching</a>
                     <a class="dropdown-item" href="#">On Hold</a>
                     <a class="dropdown-item" href="#">Plan to Watch</a>
                     <a class="dropdown-item" href="#">Completed</a>
-                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="#">Remove from Watchlist</a>
-                </div>
+                </div> -->
+                <input type="hidden" name="movie" value="{{ movie.pk }}">
+                <menu class="dropdown-menu dropdown-menu-end py-2" style="">
+                    <li><button type="submit" name="action" value="currently_watching" class="dropdown-item"
+                            >Currently Watching</button></li>
+                    <li><button type="submit" name="action" value="on_hold" class="dropdown-item" >On
+                            Hold</button></li>
+                    <li><button type="submit" name="action" value="plan_to_watch" class="dropdown-item" >Plan to
+                            Watch</button></li>
+                    <li><button type="submit" name="action" value="completed" class="dropdown-item"
+                            >Completed</button></li>
+                    <li><button type="submit" name="action" value="remove" class="dropdown-item text-danger"
+                            >Remove from Watchlist</button></li>
+                </menu>
             </form>
         </div>
         <p class="release-year">Release Year: {{movie.release_year}}</p>
