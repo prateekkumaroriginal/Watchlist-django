@@ -4,9 +4,9 @@ from .models import Movie, Watchlist
 
 # Create your views here.
 
-def index(req):
+def index(request):
     movies = Movie.objects.all()
-    return render(req, "movies/index.html", {
+    return render(request, "movies/index.html", {
         "movies_currently_watching": movies.filter(watchlist=Watchlist.objects.get(list_name="currently_watching")),
         "movies_on_hold": movies.filter(watchlist=Watchlist.objects.get(list_name="on_hold")),
         "movies_plan_to_watch": movies.filter(watchlist=Watchlist.objects.get(list_name="plan_to_watch")),

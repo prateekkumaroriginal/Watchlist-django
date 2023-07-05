@@ -21,14 +21,16 @@
                         stroke="#323232" stroke-width="2" />
                 </svg>
             </button>
-            <div class="dropdown-menu dropdown-menu-end py-2" style="">
-                <a class="dropdown-item" href="#">Currently Watching</a>
-                <a class="dropdown-item" href="#">On Hold</a>
-                <a class="dropdown-item" href="#">Plan to Watch</a>
-                <a class="dropdown-item" href="#">Completed</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="#!">Remove from Watchlist</a>
-            </div>
+            <form action="/" method="post">
+                <div class="dropdown-menu dropdown-menu-end py-2" style="">
+                    <a class="dropdown-item" href="#">Currently Watching</a>
+                    <a class="dropdown-item" href="#">On Hold</a>
+                    <a class="dropdown-item" href="#">Plan to Watch</a>
+                    <a class="dropdown-item" href="#">Completed</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="#">Remove from Watchlist</a>
+                </div>
+            </form>
         </div>
         <p class="release-year">Release Year: {{movie.release_year}}</p>
         <p class="duration">Duration: {{movie.duration_in_min}} min</p>
