@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
 from .models import Movie, Watchlist
 from django.views import View
+from django.urls import reverse
 
 # Create your views here.
 
@@ -15,3 +16,14 @@ class IndexView(View):
             "movies_plan_to_watch": movies.filter(watchlist=Watchlist.objects.get(list_name="plan_to_watch")),
             "movies_completed": movies.filter(watchlist=Watchlist.objects.get(list_name="completed")),
         })
+
+    def post(self, request):
+        data = request.POST
+        movie = Movie.objects.get(id=int(data['movie']))
+        if data['change-action'] == 'remove':
+            movie.watchlist.movies.remove(movie)
+        else:
+            new_list = get_object_or_404(
+                Watchlist, list_name=data['change-action'])
+            new_list.movies.add(movie)
+        return HttpResponseRedirect(reverse("movies:index"))
