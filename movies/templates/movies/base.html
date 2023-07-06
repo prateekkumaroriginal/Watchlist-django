@@ -39,7 +39,6 @@
                     </li>
                 </ul>
 
-                {% comment %} by jQuery {% endcomment %}
                 <form class="d-flex" id="search-form" role="search">
                     <input class="form-control me-2" id="search" placeholder="Search" aria-label="Search">
                 </form>
@@ -56,11 +55,14 @@
     $(function(){
         let availableMovies = [
         {% for movie in all_movies %}
-            `{% include 'movies/includes/movie.html' %}`,
+            {
+                label: `{{movie.title}}`,
+                value: `{% include 'movies/includes/movie.html' %}`,
+            },
         {% endfor %}
         ];
 
-        $( "#search" ).autocomplete({
+        $("#search").autocomplete({
         source: availableMovies,
         minLength: 2,
         select: function(event, ui) {
@@ -73,7 +75,7 @@
         .data("autocomplete")._renderItem = function (ul, item) {
             return $("<li></li>")
                 .data("item.autocomplete", item)
-                .append(item.label)
+                .append(item.value)
                 .appendTo(ul);
         };
     });
