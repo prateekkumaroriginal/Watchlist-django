@@ -13,6 +13,12 @@
     <div class="mt-5" id="list-container">
         <div class="list-item" id="currently-watching">
             <h3>Currently Watching</h3>
+            {% if movies_currently_watching.count == 0 %}
+                <div class="text-danger fs-4 mt-4 text-center">
+                    <p>No Movies Here</p>
+                    <p>Search To Add Movies</p>
+                </div>
+            {% endif %}
             <div class="movie-container">
                 {% for movie in movies_currently_watching %}
                 {% include 'movies/includes/movie.html' %}
@@ -21,6 +27,12 @@
         </div>
         <div class="list-item" id="on-hold">
             <h3>On Hold</h3>
+            {% if movies_on_hold.count == 0 %}
+                <div class="text-danger fs-4 mt-4 text-center">
+                    <p>No Movies Here</p>
+                    <p>Search To Add Movies</p>
+                </div>
+            {% endif %}
             <div class="movie-container">
                 {% for movie in movies_on_hold %}
                 {% include 'movies/includes/movie.html' %}
@@ -29,6 +41,12 @@
         </div>
         <div class="list-item" id="plan-to-watch">
             <h3>Plan to Watch</h3>
+            {% if movies_plan_to_watch.count == 0 %}
+                <div class="text-danger fs-4 mt-4 text-center">
+                    <p>No Movies Here</p>
+                    <p>Search To Add Movies</p>
+                </div>
+            {% endif %}
             <div class="movie-container">
                 {% for movie in movies_plan_to_watch %}
                 {% include 'movies/includes/movie.html' %}
@@ -37,6 +55,12 @@
         </div>
         <div class="list-item" id="completed">
             <h3>Completed</h3>
+            {% if movies_completed.count == 0 %}
+                <div class="text-danger fs-4 mt-4 text-center">
+                    <p>No Movies Here</p>
+                    <p>Search To Add Movies</p>
+                </div>
+            {% endif %}
             <div class="movie-container">
                 {% for movie in movies_completed %}
                 {% include 'movies/includes/movie.html' %}
