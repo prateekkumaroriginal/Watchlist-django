@@ -1,0 +1,23 @@
+div.movie{
+    scale: 2;
+}
+
+.movie-detail-container{
+    display: flex;
+    margin-top: 10rem;
+
+}
+
+.movie img:hover{
+    scale: 1;
+    cursor: default;
+}
+
+@media only screen and (max-width: 768px){
+    div.movie{
+        scale: 1.5;
+    }
+    .movie-detail-container{
+        margin-top: 4rem;
+    }
+}

@@ -1,0 +1,30 @@
+{% extends 'movies/base.html' %}
+{% load static %}
+
+{% block page_title %}{{movie.title}}{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href={% static 'movies/style.css' %}>
+<link rel="stylesheet" href={% static 'movies/movie_detail.css' %}>
+{% endblock css_files %}
+
+{% block content %}
+<div class="container movie-detail-container">
+<div class="movie">
+    <img src={{movie.cover_img.url}} alt="Movie Cover">
+    <div class="movie-details">
+        <h6 class="title">{{movie.title}}</h6>
+        <p class="release-year">Release Year: {{movie.release_year}}</p>
+        <p class="duration">Duration: {{movie.duration_in_min}} min</p>
+        <p class="imdb-rating">IMDb Rating: {{movie.imdb_rating}}</p>
+        <p class="rotten-tomatoes-score">Tomatoes: {{movie.rotten_tomatoes_score}}%</p>
+        <div class="tags">
+            {% for tag in movie.tags.all %}
+            <span class="tag">{{tag}}</span>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock content %}
