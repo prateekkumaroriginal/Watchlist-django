@@ -54,14 +54,8 @@
 <script>
 
     $(function(){
-        var availableMovieTitles = [
-            {% for movie in movies_on_hold %}
-                "{{movie.title}}",
-            {% endfor %}
-        ];
-        
         let availableMovies = [
-        {% for movie in movies_on_hold %}
+        {% for movie in all_movies %}
             `{% include 'movies/includes/movie.html' %}`,
         {% endfor %}
         ];
@@ -74,13 +68,12 @@
         },
         close : function (event, ui) {
             event.preventDefault();
-            return false;   
         },
         })
         .data("autocomplete")._renderItem = function (ul, item) {
             return $("<li></li>")
                 .data("item.autocomplete", item)
-                .append("<a>" + item.label + "</a>")
+                .append(item.label)
                 .appendTo(ul);
         };
     });

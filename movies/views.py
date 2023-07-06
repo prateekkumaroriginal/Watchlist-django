@@ -16,6 +16,7 @@ class IndexView(View):
             "movies_on_hold": movies.filter(watchlist=Watchlist.objects.get(list_name="on_hold")),
             "movies_plan_to_watch": movies.filter(watchlist=Watchlist.objects.get(list_name="plan_to_watch")),
             "movies_completed": movies.filter(watchlist=Watchlist.objects.get(list_name="completed")),
+            "all_movies": movies
         })
 
     def post(self, request):
