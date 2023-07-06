@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Movie, Watchlist
 from django.views import View
+from django.views.generic import DetailView
 from django.urls import reverse
 import json
 
@@ -23,9 +24,16 @@ class IndexView(View):
         data = request.POST
         movie = Movie.objects.get(id=int(data['movie']))
         if data['change-action'] == 'remove':
-            movie.watchlist.movies.remove(movie)
+            try:
+                movie.watchlist.movies.remove(movie)
+            except:
+                pass
         else:
             new_watchlist = get_object_or_404(
                 Watchlist, list_name=data['change-action'])
             new_watchlist.movies.add(movie)
         return HttpResponseRedirect(reverse("movies:index"))
+    
+class MovieDetailView(DetailView):
+    model = Movie
+

@@ -1,7 +1,7 @@
 <div class="movie">
-    <img src={{movie.cover_img.url}} alt="Movie Cover">
+    <a href={% url 'movies:movie-detail' movie.id %}><img src={{movie.cover_img.url}} alt="Movie Cover"></a>
     <div class="movie-details">
-        <h6 class="title">{{movie.title}}</h6>
+        <h6 class="title"><a href={% url 'movies:movie-detail' movie.id %}>{{movie.title}}</a></h6>
         <div class="font-sans-serif btn-reveal-trigger position-static ">
             <button class="list-change-button btn btn-sm dropdown-caret-none transition-none btn-reveal fs--2"
                 type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"

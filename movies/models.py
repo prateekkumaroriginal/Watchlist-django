@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -34,6 +35,9 @@ class Movie(models.Model):
     cover_img = models.ImageField(upload_to="cover_images")
     tags = models.ManyToManyField(Tag)
     watchlist = models.ForeignKey(Watchlist, on_delete=models.SET_NULL, null=True, blank=True, related_name="movies")
+    
+    def get_absolute_url(self):
+        return reverse("movie-detail", args=[self.pk])
 
     def __str__(self):
         return self.title
