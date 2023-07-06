@@ -1,0 +1,18 @@
+{% extends 'movies/base.html' %}
+{% load static %}
+
+{% block page_title %}All Movies{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href={% static 'movies/style.css' %}>
+<link rel="stylesheet" href={% static 'movies/all-movies.css' %}>
+{% endblock css_files %}
+
+{% block content %}
+<div class="basic-grid">
+    {% for movie in movie_list %}
+        {% include 'movies/includes/movie.html' %}
+    {% endfor %}
+</div>
+
+{% endblock content %}
