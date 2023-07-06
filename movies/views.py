@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Movie, Watchlist
 from django.views import View
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.urls import reverse
 import json
 
@@ -37,3 +37,7 @@ class IndexView(View):
 class MovieDetailView(DetailView):
     model = Movie
 
+
+class AllMoviesView(ListView):
+    model = Movie
+    template_name = "movies/all-movies.html"
