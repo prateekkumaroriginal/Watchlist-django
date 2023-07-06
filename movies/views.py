@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from .models import Movie, Watchlist
 from django.views import View
 from django.urls import reverse
+import json
 
 # Create your views here.
 
@@ -23,7 +24,7 @@ class IndexView(View):
         if data['change-action'] == 'remove':
             movie.watchlist.movies.remove(movie)
         else:
-            new_list = get_object_or_404(
+            new_watchlist = get_object_or_404(
                 Watchlist, list_name=data['change-action'])
-            new_list.movies.add(movie)
+            new_watchlist.movies.add(movie)
         return HttpResponseRedirect(reverse("movies:index"))

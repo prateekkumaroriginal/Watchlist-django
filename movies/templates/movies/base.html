@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
+
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block page_title %}{% endblock page_title %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     {% block css_files %}{% endblock css_files %}
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet"
+        type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -32,10 +38,12 @@
                         <a class="nav-link" href="#">Bookmarks</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+
+                {% comment %} by jQuery {% endcomment %}
+                <form class="d-flex" id="search-form" role="search">
+                    <input class="form-control me-2" id="search" placeholder="Search" aria-label="Search">
                 </form>
+
             </div>
         </div>
     </nav>
@@ -43,5 +51,41 @@
     {% block content %}{% endblock content %}
 
 </body>
+<script>
+
+    $(function(){
+        var availableMovieTitles = [
+            {% for movie in movies_on_hold %}
+                "{{movie.title}}",
+            {% endfor %}
+        ];
+        
+        let availableMovies = [
+        {% for movie in movies_on_hold %}
+            `{% include 'movies/includes/movie.html' %}`,
+        {% endfor %}
+        ];
+
+        $( "#search" ).autocomplete({
+        source: availableMovies,
+        minLength: 2,
+        select: function(event, ui) {
+            event.preventDefault();
+        },
+        close : function (event, ui) {
+            event.preventDefault();
+            return false;   
+        },
+        })
+        .data("autocomplete")._renderItem = function (ul, item) {
+            return $("<li></li>")
+                .data("item.autocomplete", item)
+                .append("<a>" + item.label + "</a>")
+                .appendTo(ul);
+        };
+    });
+
+</script>
 {% block js_files %}{% endblock js_files %}
+
 </html>

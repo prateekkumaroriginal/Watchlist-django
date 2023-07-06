@@ -93,6 +93,12 @@
     margin-right: 20px;
 }
 
+.movie img:hover {
+    cursor: pointer;
+    scale: 1.1;
+    transition: .2s ease-out;
+}
+
 .movie-details {
     display: flex;
     flex-direction: column;
@@ -123,4 +129,10 @@
 .title {
     float: left;
     margin-right: 2rem;
+}
+
+#search-form{
+    position: relative;
+    right: 25rem;
+    width: 22rem;
 }
