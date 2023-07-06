@@ -33,7 +33,8 @@ class IndexView(View):
                 Watchlist, list_name=data['change-action'])
             new_watchlist.movies.add(movie)
         return HttpResponseRedirect(reverse("movies:index"))
-    
+
+
 class MovieDetailView(DetailView):
     model = Movie
 
