@@ -4,7 +4,6 @@ from .models import Movie, Watchlist
 from django.views import View
 from django.views.generic import DetailView, ListView
 from django.urls import reverse
-import json
 
 # Create your views here.
 
